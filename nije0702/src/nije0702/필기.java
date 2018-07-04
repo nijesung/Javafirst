@@ -133,15 +133,39 @@
 // 사용 이유: 인스턴스 메소드에 지역 변수와 인스턴스 변수의 이름이 같을 때 인스턴스 변수를 가리키기 위해서 사용
 //         
 //
+// *package & import*
+// package: 관련있는 클래스의 집합. 디렉토리와유사, "jar" 로 압축해서 제공. (사용 중일 때를 의미함)
+// library: 프로그램을 만드는 데 도움을 주는 파일의 집합. 
+// 1. 기업 제공은 sdk. 2. 기업이 아닌 개인이 제공하는 것이 "서드파티" 3. 개발자가 직접 제작
+// framework: 프로그램을 쉽게 개발하게 해주는 도구 (예: 비주얼 스투디오, Spring framework) (범용)
+// solution: 특정목적에 맞는 프로그램을 제작 해 주는 도구  (타겟이 있음)
+
+// include: 소스에 포함. 가져오는 개념
+// import: java에서의 import는 개념이 다르다. 이름을 줄여쓰기 위해서 사용 (예: Scanner 는 원래 java.util.Scanner)
+// 방법 1 : import 패키지이름. 클래스이름 - 패키지에 있는 클래스 중에서 클래스 이름에 해당하는 클래스는 패키지 이름을 생략해도 된다.
+// 방법 2 : import 패키지이름. * -  패키지에 있는 모든 클래스들은 패키지 이름을 생략해도 된다.
+// java에서는 java.lang 패키지는 기본적으로 import가 되어 있다. (예: String)
+
+// **상속(Inheritance)
+// =>상위 클래스의 모든 멤버를 하위 클래스가 물려 받는 것
+// 1.하는 이유
+// =>중복된 코드를 제거해서 코드를 간결하게 만들고 유지보수를 편리하게 하기 위해서
+// =>기존에 제공된 기능에 내용을 추가하고자 해서
+
+// 2.하는 방법
+// 클래스 이름 뒤에 extends를 쓰고 상위 클래스 이름을 적어주면 된다.
+
+// 3.private 멤버는 상속은 되는데 하위 클래스에서 접근을 할 수 없다.
+// 하위 클래스에서 접근하도록 하기 위해서는 접근 지정자를 protected 나 public으로 변경해야 한다.
+
 
 
 package nije0702;
 
-public class 메소드 {
+public class 필기 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		sddssddssdds
+		// TODO Auto-generated method stub b
 
 	}
 
