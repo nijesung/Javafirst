@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ChoanbiotaDaoImpl implements ChoanbiotaDao {
@@ -173,14 +174,72 @@ public class ChoanbiotaDaoImpl implements ChoanbiotaDao {
     
 	@Override
 	public List<Choanbiota> allChoanbiota() {
-        // TODO Auto-generated method stub
-		return null;
+        List<Choanbiota> list = new ArrayList<Choanbiota>(); // 읽어온 데이터를 저장하기 위한 리스트 생성
+        connect();
+        try {
+        	ppsm = con.prepareStatement // Choanbiota 테이블에 있는 전체 데이터를 가져오는 SQL 실행 객체 생성
+        			("select * from choanbiota");
+        	/*
+					("update choanbiota "
+							+ "set specific_name=?,population=?, detect_day=? "
+							+ "where num=?");
+        	("select specific_name, population, detect_day, where num");
+        	*/
+        	rs = ppsm.executeQuery(); // select 구문 실행
+        	
+        	// 반복문을 이용해서 데이터를 읽어서 List 에 저장
+        	while(rs.next()) {
+        		Choanbiota choanbiota  = new Choanbiota();
+        		choanbiota.setNum(rs.getInt("num"));
+        		choanbiota.setPopulation(rs.getInt("population"));
+        		choanbiota.setSpecific_name(rs.getString("specific_name"));
+        		choanbiota.setDetect_day(rs.getDate("detect_day"));
+        		
+        		list.add(choanbiota); // 읽은 데이터를 리스트에 저장
+        	}
+        	
+        }
+        catch(Exception e) {
+        	System.out.println(e.getMessage());
+        	e.printStackTrace();
+        }
+        
+        
+        
+        close();
+        return list;
 	}
 
 	@Override
 	public List<Choanbiota> specific_nameChoanbiota(String specific_name) {
-		// TODO Auto-generated method stub
-		return null;
+		List<Choanbiota> list = new ArrayList<Choanbiota>(); // 읽어온 데이터를 저장하기 위한 리스트 생성
+        connect();
+        try { // Choanbiota 테이블의 specific_name 컬럼에  specific_name 의 값이 포함된 데이터를 조회하는 SQL
+        	// 물음표에 데이터 바인딩 하기
+        	ppsm = con.prepareStatement("select * from choanbiota where upper(specific_name) like ?");
+        	ppsm.setString(1,  "%" + specific_name + "%"); // SQL 실행하기
+        	rs = ppsm.executeQuery();
+        	
+        	// 데이터를 읽어서 list 에 저장하기
+        	while(rs.next()) { // 하나의 행을 읽어서 DTO 에 저장
+        		Choanbiota choanbiota  = new Choanbiota();
+        		choanbiota.setNum(rs.getInt("num"));
+        		choanbiota.setPopulation(rs.getInt("population"));
+        		choanbiota.setSpecific_name(rs.getString("specific_name"));
+        		choanbiota.setDetect_day(rs.getDate("detect_day"));
+        		
+        		list.add(choanbiota); // 읽은 데이터를 리스트에 저장
+        	}
+        	
+        	
+        }catch(Exception e) {
+        	System.out.println(e.getMessage());
+        	e.printStackTrace();
+        }
+        
+        
+        close();
+		return list;
 	}
 	
 
