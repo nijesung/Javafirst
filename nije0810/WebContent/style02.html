@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>리스트 스타일</title>
+<style>
+    /* 목록 모양 만들기 */ 
+    ol{
+        list-style-type:hiragana;
+    }
+    ul{
+        list-style-image:url(images/낙타거미.jpeg)
+    }
+    /* 배경 색상 만들기 */
+    h3{background-color:green;
+    border-width:5px;
+    border-style:solid;
+    border-top-color:blue;
+    border-left-color:blue;
+    border-right-color:red;
+    border-bottom-color:red;}
+    
+    h3:active{
+    border-width:5px;
+    border-style:solid;
+    border-top-color:red;
+    border-left-color:red;
+    border-right-color:blue;
+    border-bottom-color:blue;
+    margin:2px}
+    <!--
+    /* 배경 이미지 만들기 */
+    body{
+    background: #1e5799; /* Old browsers */
+background: #1e5799; /* Old browsers */
+background: -moz-linear-gradient(top, #1e5799 0%, #2989d8 0%, #2989d8 0%, #7db9e8 0%, #7db9e8 5%, #207cca 83%, #207cca 83%, #207cca 84%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, #1e5799 0%,#2989d8 0%,#2989d8 0%,#7db9e8 0%,#7db9e8 5%,#207cca 83%,#207cca 83%,#207cca 84%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, #1e5799 0%,#2989d8 0%,#2989d8 0%,#7db9e8 0%,#7db9e8 5%,#207cca 83%,#207cca 83%,#207cca 84%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#207cca',GradientType=0 ); /* IE6-9 */
+    <!--
+    background:url(images/낙타거미.jpeg) left top repeat-y,
+    url(images/낙타거미.jpeg) right top repeat-y,
+    url(images/낙타거미.jpeg) right top repeat-x
+    -->
+    -->
+    
+    }
+    
+    #radius{
+    width:100px;
+    heightL:100px;
+       background-color:skyblue;
+       border-radius:250px 250px 250px 250px;
+    }
+    
+    div{
+    float:left
+    }
+    
+    section{
+         display:block;
+    }
+    
+</style>
+</head>
+<body>
+   <div>가</div><div>나</div><br/><br/>
+   <a href="#"><h3>Full Stack</h3></a>
+   <ol>
+      <li id="radius">java</li>
+      <li>자료구조</li>
+      <li>알고리즘</li>
+      <li>데이터베이스</li>
+      <li>Front End</li>
+      <li>Java Web Programming</li>
+      <li>Andriod</li>
+      <li>iOS</li>
+   </ol>
+   <h3>많이 사용하는 프로그램</h3>
+   <ul>
+      <li>JavaScript</li>
+      <li>C&amp;C++</li> <!-- 이렇게 하면 경고가 없어진다 -->
+      <li>Java</li>
+      <li>C#</li>
+      <li>Python</li>
+      <li>R</li>
+      <li>Swift</li>
+      <li>Kotlin</li>
+      <li>SQL</li>
+      <li>Scala</li>
+   </ul>
+   
+</body>
+</html>

@@ -1,0 +1,13 @@
+h3{color:blue}
+/* 주석입니다 */
+.article, #atid{color:green;} <!-- 항목이 하나일 때는 세미콜론을 쓰지 않아도 된다 
+                                   여러 개에 동일한 디자인을 주고 싶으면 , 찍고 붙이면 된다 -->
+
+h3.hover{color:gray;}
+h3:active{color:yellow;}
+
+h4{
+	font-size: 100px;
+	text-shadow: 10px 10px #cccc99;
+}
+
