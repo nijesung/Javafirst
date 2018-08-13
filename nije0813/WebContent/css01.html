@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>CSS</title>
+<style>
+    .content{
+           width:200px;
+           background:#fdd;
+           border:2px solid #123456;
+           outline:2px solid #ffaa00;
+           outline-offset:3px;
+           resize:both;
+           overflow:auto;
+    }
+    
+    div{
+        background-color:papayawhip;
+        width:300px;
+        height:150px;
+        
+        -webkit-transform:rotate(300deg);
+        -moz-transform:rotate(300deg);
+        -ms-transform:rotate(300deg);
+    }
+    
+    a{
+       /* 주위에 아무것도 배치되지 않도록 블럭 요소로 변경 */
+       display:block;
+       width:300px;
+       height:50px;
+       background:#123456;
+       
+       -webkit-transition:all 3.0s
+
+    }
+    a:hover{
+       width:450;
+       background-color:skyblue;
+       opacity:0.0;
+    }
+    
+</style>
+</head>
+<body>
+    <h2>CSS - resize 와 outline</h2>
+    <p class="content" id="pid">
+    오늘은 CSS 두 번째 날이다.
+    각오하는 것이 좋을 것이다. 네놈의 뇌간이 녹아내릴 것이다.</p>
+    <div>
+    </div>
+    
+    <a href="#">애니메이션 메뉴</a>
+    
+    
+
+</body>
+</html>

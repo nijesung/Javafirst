@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>변수선언과 undifined</title>
+
+<script>
+    var i = 10
+    // 자료형 확인
+    document.write("i의 자료형: " + typeof i + "<br />")
+    var x
+    document.write("x의 자료형: " + typeof x + "<br />")
+    
+    var ar = ["HTML", "CSS", "Javascript"]
+    console.log(ar.toString())
+    console.log(ar)
+    console.log(ar.valueOf())
+    console.log(ar.join("&"))
+    
+    var i = 0
+    alert(i++)
+    alert(++i)
+    
+    var result = i++ + i++
+    alert(result)
+    
+    // 현재까지 i = 4
+    
+    var x = i>0 ? 10 : i++
+    alert(i)
+    
+</script>
+
+</head>
+<body>
+
+</body>
+</html>

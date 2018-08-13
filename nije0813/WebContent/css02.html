@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style>
+    img{
+       width:24%;
+       height:100px;
+    } 
+    
+    /*화면의 너비가 960픽셀까지 적용할 css */
+    @media screen and(max-width:960px){
+      img{
+         width:48%;
+         height:70px;
+         }
+    }
+    
+    /*화면의 너비가 480셀 까지 적용할 css */
+    @media screen and (max-width:480px){
+      img{
+         width:96%
+         height:50px;
+         }
+    }
+    
+</style>
+
+</head>
+<body>
+    <img src="image/낙타거미.jpeg" />
+    <img src="image/길앞잡이2.jpeg" />
+    <img src="image/길앞잡이1.png" />
+
+</body>
+</html>
