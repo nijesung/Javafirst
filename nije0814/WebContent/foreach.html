@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>foreach</title>
+</head>
+<body>
+
+</body>
+
+<script>
+    // 배열을 생성
+    var ar = ["존 존스", "엘렉샌더 구스타프손", "글로버 테세이라", "볼캉 위즈데미르"]
+    // 배열의 모든 데이터를 순서대로 출력
+    // t 에는 배열의 인덱스가 순서대로 대입된다.
+    for(t in ar){
+    	alert(t + ":" + ar[t])
+    }
+    
+    // 객체를 생성
+    var obj ={"name": "찰스 올리베이라", "book":"파레이돌리아"}
+    for (t in obj){
+    	alert(t + ":" + obj[t])
+    }
+    
+    // location 이라는 객체의 속성 확인
+    for (t in location){
+    	document.writeln("<br/>" + t)
+    }
+    
+
+</script>
+</html>

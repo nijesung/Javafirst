@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<script>
+     // 이름과 나이를 저장할 수 있는 속성을 만들고
+     // 이름과 나이를 하나의 문자열로 만들어서 리턴하는 함수
+     // 속성 이름에는 따옴표 생략 가능
+     var 인스턴스이름 = {
+    		 name: "noname",
+    		 age:0,
+    		 toString: function(){
+    			 // 객체 안에 있는 함수에서 객체 안에 있는 다른 속성을 호출할 때는
+    			 // this. 을 붙여 주어야 한다.
+    			 return this.name + ":" + this.age
+    		 }
+     }
+     
+     person.name = "관리자"
+     person.age = 30
+     document.writeln(person.toString() + "<br/>")
+     
+     // 자바스크립트 객체는 존재하는 속성에 값을 대입하면
+     // 대입할 때 속성을 만들어서 값을 저장한다.
+     person.phone = "01037901997"
+     alert(person.phone)
+     
+     // person 모든 속성 확인
+     for(attr in person){
+    	 alert(attr)
+     }
+     
+   // ex) 이름과 나이를 갖는 생성자
+   function Person(name, age){
+      this.name = name
+      this.age = age
+      this.toString = function(){
+         return name + ":" + age
+      }
+   }
+
+   var obj1 = new Person("존존스",30)
+   var obj2 = new Person("최두호",91)
+
+   alert(obj1.toString())
+   alert(obj2.toString())
+     
+</script>
+
+</body>
+</html>
