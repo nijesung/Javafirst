@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>타이머 관련 함수</title>
+</head>
+<body>
+    <img src="image/4.jpeg" id="image" />
+</body>
+
+<script>
+    alert(navigator.userAgent)
+    // 1초마다 수행되는 타이머
+    var img = document.getElementById("image")
+    var idx = 1
+    var t = setInterval(function(){
+    	/*
+    	img.src = "images/" + idx + ".jpeg"
+    	idx = idx - 1
+    	*/
+       window.open('https://www.google.co.kr','구글','width=300', 'height=300')
+       
+       child.moveBy(10, 10)
+       
+       
+    }, 5000)
+    
+    /*
+    // 4초 후에 한번만 동작하는 타이머
+    setTimeout(function(){
+     	clearInterval(t)
+     	window.location = "index.html"
+    }, 4000)
+    */
+</script>
+</html>

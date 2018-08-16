@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+<script>
+     
+     var ar = [null, "존 존스", "엘렉센더 구스타프손", "안드레 구스마어", "대니엘 코미어", "에베르톤 테이세이라"]
+     var first = ar.slice(0,3)
+     alert(first)
+     
+     var second = ar.slice(3,6)
+     alert(second)
+     
+     // filter 는 매개변수가 1개이고 Boolean 을 리턴하는 함수를 매개변수로
+     // 받아 true	 를 리턴하는 내용만 가지고 새로운 배열을 만들어서 리턴한다.
+     var result = ar.filter(function(element){
+         return element.length >= 4
+     })
+     
+     /*
+     // 어 로 끝나는 데이터만 추출
+     result = ar.filter(function(element){
+         return element.charAt(element.length-1) == '어'
+     })
+     */
+     
+     
+     // map 은 리턴되는 데이터를 가지고 배열을 새로 생성
+     result = ar.map(function(element){
+      // return element.length // 글자 수만 가지고 배열을 다시 만든다 (무엇을 리턴하느냐에 따라 달라짐)
+         if(element == null)
+        	 element = "이름 없음"
+        	 return element
+     })
+     
+     alert(result)
+     
+     
+
+
+</script>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원가입</title>
+</head>
+<body>
+   <form>
+       <div id="msg"></div>
+       <!-- id 는 페이지 내에서 구분하기 위한 속
+            name 은 서버에서 전송할 때 구분하기 위한 속성 -->
+       이메일:<input type="text" id="email" name="email"/>
+       <br />
+       비밀번호:<input type="password" id="pw" name="pw"/>
+       <br />
+       비밀번호확인:<input type="password" id="pw01"/>
+       <br />
+       이름:<input type="text" id="name" name="name" />
+       <br />
+       <input type="submit" value="회원가입" />
+       <input type="button" value="메인으로"
+       id="btn"/>
+  <!-- onclick="location.href='index.html'" /> -->
+       
+     
+   </form>
+
+</body>
+
+<script>
+    // 전통적인 이벤트 처리 방식
+    /*
+    document.getElementById("btn").onclick = function(){
+    	location.href="index.html"
+    }
+    */
+    
+    // 표준 이벤트 처리 방식 (젤 조음)
+    document.getElementById("btn").addEventListener(
+    		'click', function(e){
+    			// 이벤트 객체 가져오기
+    	    var event = e || window.event
+    	    // 이벤트가 발생한 버튼의 id 를 출력
+    	    alert(event.target.id)
+    		alert("당신은 검거 되었습니다")
+    });
+
+    document.getElementById("email").value="nije" // value 는 입력된 값을 가져오거나 설정할 때 사용
+    
+    	// 닫는 태그가 있는 태그들은 안에 내용을 삽입하거나 가져올 수 있다.
+    	// 이 때 사용하는 속성이 innerHTML 이다.
+    	document.getElementById("msg").innerHTML =
+    		"안녕하세요<br /> 당신은 전과자이므로 회원 가입이 불가능합니다."
+        document.getElementById("msg").style.color = 'red'
+</script>
+</html>
