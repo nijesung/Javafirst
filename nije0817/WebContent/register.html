@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원 가입</title>
+</head>
+<body>
+    <form action="register.jsp" onsubmit="return check()">
+       <table align="center">
+          <tr>
+             <td colsapn="2" align="center">
+                <h3>회원 가입</h3>
+             </td>
+          </tr>
+          <tr>
+             <td align="right">
+             이름&nbsp;&nbsp;
+             </td>
+             <td>
+             &nbsp;&nbsp;
+             <input type="text" size="20" id="name"/>
+             <div id="namemsg"></div>
+             </td>
+          </tr>
+          <tr>
+             <td align="right">
+             비밀번호&nbsp;&nbsp;
+             </td>
+             <td>
+             &nbsp;&nbsp;
+             <input type="password" size="20" id="pw01"/>
+             </td>
+          </tr>
+          <tr>
+             <td align="right">
+             비밀번호 확인&nbsp;&nbsp;
+             </td>
+             <td>
+             &nbsp;&nbsp;
+             <input type="password" size="20" id="pw02"/>
+             <div id="pwmsg"></div>
+             </td>
+          </tr>
+          <tr>
+             <td align="right">
+             핸드폰 번호&nbsp;&nbsp;
+             </td>
+             <td>
+             &nbsp;&nbsp;
+             <input type="text" size="20" 
+             maxlength="11" id="phone"
+             onkeydown="return numCheck()"/>
+             <div id="phonemsg"></div>
+             </td>
+          </tr>
+          <tr>
+             <td colsapn="2" align="center">
+             <input type="submit" value="회원가입"/>
+             <input type="button" value="메인으로"/>
+          </td>
+       
+       </table>
+    </form>
+</body>
+<script>
+    function numCheck(e){
+    	// 이벤트 내용을 가진 객체 가져오기
+    	var event = e || window.event
+    	// 누른 키보드 값 가져오기
+        var keycode = window.event?window.event.keyCode:e.which
+        if(keycode >= 48 && keycode <= 57 || key code == 8){
+        	return true
+        }else{
+    	    return false
+        }
+    }
+    
+    function check(){
+    	var name = document.getElementById("name")
+    	var namemsg = document.getElementById("namemsg")
+    	
+    	if(name.value.length <= 0){
+    		namemsg.innerHTML = "이름은 필수 입력이다."
+    		return false;
+    	}
+    	// 이름은 한글 2~5자 검사
+        var regName = /^[가-힣]{2,5}$/
+        if(regName.test(name.value) == false){
+        	namemsg.innerHTML = "이름은 한글 2~5자 사이로 입력해."
+        	return false;
+        }
+        
+        // 비밀번호 2개는 일치해야 한다.
+        var pw01 = document.getElementById("pw01")
+        var pw02 = document.getElementById("pw02")
+        var pwmsg = document.getElementById("pwmsg")
+        if(pw01.value != pw02.value){
+        	pwmsg.innerHTML = "2개의 비밀번호는 일치해야 해"
+            pwmsg.style.color = "red"
+            pw01.focus()
+            return false
+        }
+        
+        var reg01 = /[a-z]/
+        var reg02 = /[A-Z]/
+        var reg03 = /[0-9]/
+        var reg04 = /[!@#$%^&*]/
+        if(reg01.test(pw01.value) && reg02.test(pw01.value)
+        		&&reg03.test(pw01.value)&&reg4.test(pw01.value)){
+        	
+        }else{
+        	pwmsg.innerHTML="비밀번호는 영문대소문자 숫자 특수문자 조합해"
+        	return false;
+        }
+        
+        // 전화번호 검사: 010 011 016 017 018 019 뒤의 숫자는 3~4자리 숫자 4자리
+        var phone = document.getElementById("phone")
+        var phonemsg = document.getElementById("phonemsg")
+        var phonereg = /^(010|011|012|016|017|018|019)\d{3,4}\d{4}$/
+        if(phonereg.test(phone.value) == false){
+        	phonemsg.innerHTML = "유효하지 않은 전화번호이다."
+        	return false
+        }
+    }
+</script>
+</html>

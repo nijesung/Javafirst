@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>window.onload</title>
+<script>
+// window 가 모든 태그를 읽어서 메모리에 적재하고 난 후 수행
+window.onload = function(){
+	// 정규식 객체 생성
+	var reg = /lgphone/
+	// 문자열 생성
+	var str = "lgphone 은 무한부팅 오류가 극혐입니다."
+	if(reg.test(str))
+        document.getElementById("msg").innerHTML = "lgphone 이 존재합니다."
+    else
+    	document.getElementById("msg").innerHTML = "lgphone 이 존재하지 않습니다."
+    	
+    	// 숫자가 있는지의 여부 확인
+    	reg = /[0-9]/
+    	var str01 = "csddssd9ewf"
+    	var str02 = "dsvsdvssfws"
+     //	alert(reg.test(str01))
+     //	alert(reg.test(str02))
+    	
+    	reg = /^[a-zA-Z_$]/
+    	str01 = "csddssd9ewf"
+    	str02 =	"3svsdvssfws"
+    		alert(reg.test(str01))
+        	alert(reg.test(str02))
+    	
+    var csv = "조제 아우두,브라이언 오르테가"
+    // 콤마를 기준으로 분할
+    var ar = csv.split(',')// (/,/) 도 댐
+    for(idx in ar){
+    	alert(ar[idx])
+    }
+	
+	var result = csv.replace(/,/, '-$&-')
+	alert(result)
+}
+</script>
+</head>
+<body>
+    <div id="msg"></div>
+</body>
+</html>
