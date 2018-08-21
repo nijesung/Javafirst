@@ -1,0 +1,18 @@
+<svg id="svgelem" height="600"
+xmlns="http://www.w3.org/2000/svg">
+
+<rect width="300" height="300"
+style="fill:rgb(0,0,255);
+stroke-width:1px;stroke:rgb(0,0,0)">
+
+<animate attributeName="stroke-width"
+values="1px;290px;1px" dur="0.002s"
+repeatCount="indefinite" />
+
+<animate attributeName="stroke"
+values="rgb(185,0,0);rgb(0,180,0);rgb(185,0,0)" dur="2s"
+repeatCount="indefinite" />
+
+</rect>
+
+</svg>
