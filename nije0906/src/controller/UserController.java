@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.JSONObject;
+
 import service.UserService;
 import service.UserServiceImpl;
 import vo.Fighter;
@@ -38,7 +40,7 @@ public class UserController extends HttpServlet {
 		
 		// command 가 콘솔에 출력이 되지 않으면 URL 을 제대로 처리하지 못한 것
 		// form 에서 전송할 때 사용할 URL 과 Servlet 이 처리하는 URL 이 같은 지 확인
-		System.out.println(command);
+		// System.out.println(command);
 		
 		switch(command) {
 		case "user/login":
@@ -64,6 +66,7 @@ public class UserController extends HttpServlet {
 			// 시작 페이지로 리다이렉트
 			response.sendRedirect("../");
 			break;
+			
 		case "user/register":
 			// 단순 페이지 이동
 			// 출력하는 페이지의 경로를 설정할 때는 URL 을 기준으로 한다.
@@ -72,6 +75,36 @@ public class UserController extends HttpServlet {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("../fighter/register.jsp");
 			dispatcher.forward(request, response);
 			break;
+			
+		case "user/insert":
+			// 이 문장이 나오지 않으면 링크 확인
+			System.out.println("회원가입 처리");
+			boolean r = userService.registerFighter(request);
+			if(r == true) {
+				// 회원가입에 성공했을 때
+				session.setAttribute("msg", "회원 가입이 성공했다.");
+				response.sendRedirect("../");
+			}else {
+				// 회원가입에 실패했을 때 처리
+				session.setAttribute("msg", "회원 가입에 실패했다.");
+				response.sendRedirect("register");
+			}
+			
+			break;
+			
+		case "user/emailcheck":
+			boolean result = userService.emailCheck(request);
+			
+			//json 으로 출력할 때는 리턴받은 데이터를 바로 저장하지 말고 JSON 객체로 변환하여 저장
+			JSONObject obj = new JSONObject();
+			obj.put("result", result);
+			
+			// 데이터를 저장
+			request.setAttribute("result", obj);
+			// 결과 페이지로 포워딩 - 리다이렉트로 가능
+			RequestDispatcher dispatcher01 = request.getRequestDispatcher("/fighter/emailcheck.jsp");
+			dispatcher01.forward(request, response);
+			
 		}
 	}
 

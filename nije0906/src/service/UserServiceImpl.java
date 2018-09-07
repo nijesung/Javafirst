@@ -1,5 +1,7 @@
 package service;
 
+import java.io.UnsupportedEncodingException;
+
 import javax.servlet.http.HttpServletRequest;
 
 import dao.UserDao;
@@ -53,6 +55,58 @@ public class UserServiceImpl implements UserService {
 			
 			// 결과 리턴
 			return user;
+		}
+
+		@Override
+		public boolean registerFighter(HttpServletRequest request) {
+			// 
+			System.out.println("서비스 도착");
+			boolean result = false;
+			
+			// 파라미터를 읽기
+			try {
+				request.setCharacterEncoding("urf-8");
+			} catch (UnsupportedEncodingException e) {
+				e.printStackTrace();
+			}
+			String email = request.getParameter("email");
+			String pw = request.getParameter("pw");
+			String name = request.getParameter("name");
+			String phone = request.getParameter("phone");
+			String addr = request.getParameter("addr");
+			
+			// 파라미너 출력
+			// null 이 나오면 확인
+			System.out.println("email: " + email);
+			System.out.println("pw: " + pw);
+			System.out.println("name: " + name);
+			System.out.println("phone: " + phone);
+			System.out.println("addr: " + addr);
+			
+			
+			// Dao 메소드의 파라미터 만들기
+			Fighter fighter = new Fighter();
+			fighter.setEmail(email);
+			fighter.setPw(pw);
+			fighter.setName(name);
+			fighter.setPhone(phone);
+			fighter.setAddr(addr);
+			
+			System.out.println(fighter);
+			
+			// Dao 메소드 호출
+			result = userDao.registerFighter(fighter);
+			
+			return result;
+		}
+
+		@Override
+		public boolean emailCheck(HttpServletRequest request) {
+			// 파라미터 읽어오기
+			String email = request.getParameter("email");
+			// Dao의 메소드 호출
+			boolean result = userDao.emailCheck(email);
+			return result;
 		}
 	
 
