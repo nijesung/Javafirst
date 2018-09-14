@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!-- 데이터베이스 접속 정보를 저장할 DataSource 빈 -->
+<bean 
+class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+		id="dataSource">
+		<property value="oracle.jdbc.driver.OracleDriver" name="driverClassName" />
+		<property value="jdbc:oracle:thin:@192.168.10.101:1521:xe"
+			name="url" />
+		<property value="user11" name="username" />
+		<property value="user11" name="password" />
+</bean>
+
+<!-- MyBatis 설정 정보를 저장하는 클래스의 bean -->
+<!-- 되도록이면 밑에 위치시키기 -->
+<bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactory">
+	<!-- 데이터베이스 접속 정보 설정 -->
+	<property name="dataSource" ref="dataSource" />
+	<!-- MyBatis 환경설정 파일 위치 정보 설정 -->
+	<property name="configLocation" value="classpath:/mybatis/mybatis-config.xml" />
+</bean>
+
+
+</beans>

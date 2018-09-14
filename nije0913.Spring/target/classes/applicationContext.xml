@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- vo.Sample 이라는 클래스의 객체를 싱글톤 으로 생성해 주는 코드 -->
+	<bean id="sample" class="vo.Sample"
+	p:num="10">
+	<!-- num 에 10을 직접 대입 -->
+	<!--  
+		<property name="num">
+			<value>10</value>
+		</property>
+		-->
+		
+		<!-- name 에 name 이라는 id 를 가진 bean 을 대입 -->
+		<property name="name">
+			<ref bean="name" />
+		</property>
+	</bean>
+	
+	<!-- c_0 은 생성자의 첫 번째 매개변수로 대입한다는 의미이다. -->
+	<bean id="name" class="java.lang.String"
+	c:_0="볼칸 위즈데미르">
+		<!-- 생성자에 볼칸을 대입 -->
+		<!--  
+		<constructor-arg>
+			<value>볼칸 위즈데미르</value>
+		</constructor-arg>
+		-->
+	</bean>
+	
+<!-- vo.CollectionBean 클래스의 객체를 생성하는 코드 -->
+<bean id="collectionBean"
+class="vo.CollectionBean">
+	<property name="list">
+		<list>
+			<value>배열(DenseList)</value>
+			<value>ArrayList(Vector)</value>
+			<value>LinkedList</value>
+			<value>Stack</value>
+			<value>Queue</value>
+			<value>Deque</value>
+		</list>
+	</property>
+	
+	<property name="set">
+		<set>
+			<value>HashSet(순서 모름)</value>
+			<value>LinkedHashSet(입력 순서)</value>
+			<value>TreeSet(크기 순서)</value>
+		</set>
+	</property>
+	
+</bean>
+
+</beans>
