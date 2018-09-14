@@ -155,6 +155,38 @@
 // 4. Dao 클래스를 생성해 MyBatis 실행 클래스를 주입하는 코드를 만들기
 //	  com.mybatis.dao.InsectDao
 
+// 5. main 메소드를 소유한 클래스를 만들고 설정을 확인
+
+
+// **테이블의 전체 데이터 가져오기
+// select 구문 만들기
+// <select resultType="select 절의 데이터를 저장할 수 있는 자료형"
+//  parameterType="where 절에 대입해야 하는 데이터를 한꺼번에 줄 수 있는 자료형">
+//  sql 구문
+//  </select>
+
+// select 구문 실행
+// List<resultType> sqlSession.selectList("sql의 id", 파라미터로 대입될 데이터);
+// resultType sqlSession.selectOne("sql의 id", 파라미터로 대입될 데이터);
+
+// 1). mapper 파일에 insect 테이블의 전체 데이터를 가져오는 SQL 을 작성
+
+// 2). InsectDao 클래스에 위에서 만든 SQL 을 호출하는 메소드를 생성
+//	   public List<Insect> list(){
+//       return sqlSession.selectList("insect.list");
+//     }
+
+
+// # 발생할 수 있는 예외
+// 1. mapper 파일에 resultType 이나 parameterType 에 클래스 이름을 잘못 기재한 경우
+//    ClassNotFoundException
+
+// 2. sql 구문을 잘못 작성한 경우
+//    java.sql.SQLSyntax ...
+
+// 3. Dao 클래스에서 sql 의 이름을 잘못 기재한 경우
+//    일리걸아규먼트익셉션
+
 package Web;
 
 public class 필기0914 {
