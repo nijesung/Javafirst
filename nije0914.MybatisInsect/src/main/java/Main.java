@@ -12,6 +12,14 @@ public class Main {
 		GenericXmlApplicationContext context = new GenericXmlApplicationContext("classpath:applicationContext.xml");
 		
 		InsectDao dao = context.getBean(InsectDao.class);
+		
+		Insect ins = new Insect();
+		ins.setCode(100);
+		ins.setName("kingbug");
+		ins.setPrice(50000);
+		ins.setDescription("anywhere");
+		dao.insertInsect(ins);
+		
 		List<Insect> list = dao.list();
 		for(Insect insect : list) {
 			System.out.println(insect);

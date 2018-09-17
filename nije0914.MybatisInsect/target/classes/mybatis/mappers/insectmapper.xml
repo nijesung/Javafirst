@@ -2,12 +2,19 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
 <mapper namespace="insect">
 
 	<select id="list" 
 	resultType="com.mybatis.domain.Insect">
 		select code, name, price, description from insect
-	</select>	
-
+	</select>
+	
+	
+	<insert id="insertinsect"
+	parameterType="com.mybatis.domain.Insect">
+		insert into insect(code, name, price, description)
+		values(#{code}, #{name}, #{price}, #{description})
+	</insert>
 
 </mapper>

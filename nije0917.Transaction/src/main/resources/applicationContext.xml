@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.1.xsd">
+
+
+<!-- 항상 처음은 데이터베이스 접속 정보를 갖는 DataSource -->
+<bean class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+		id="dataSource">
+		<!-- 데이터베이스 드라이버 클래스 이름 -->
+		<!-- 데이터베이스 종류가 바뀌면 수정 -->
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+		<!-- 데이터베이스 접속 위치 -->
+		<!-- 데이터베이스 서버 위치가 변경되는 수정 -->
+		<property name="url" value="jdbc:oracle:thin:@192.168.10.101:1521:xe" />
+		
+		<!-- 접속 계정이 변경 된 경우 수정 -->
+		<property value="user11" name="username" />
+		<property value="user11" name="password" />
+	</bean>
+	
+	<!-- MyBatis 환경 설정 정보를 저장하는 클래스 -->
+	<bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactory">
+	<!-- 데이터베이스 연결 정보를 저장한 객체를 지정(**필수 요소) -->
+	<property name="dataSource" ref="dataSource" />
+	
+	</bean>
+	<!-- 매퍼 인터페이스를 이용하는 Dao 객체를 만들어 주는 bean -->
+	<bean id="deptMapper"
+	class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface"
+		value="dao.DeptMapper" />
+		<property name="sqlSessionFactory"
+		ref="sqlSessionFactory" />
+	</bean>
+
+
+<!-- annotation 과 xml 을 같이 사용할 수 있도록 해 주는 설정 -->
+<!-- 인스턴스를 자동으로 생성해 주는 패키지 설정 -->
+<context:annotation-config />
+<!-- 클래스 이름 위에 annotation 이 있으면 객체를 자동 생성해주는 설정 -->
+<context:component-scan base-package="service" />
+
+<!-- 트랜잭션 적용을 위한 bean 만들기 -->
+<bean id="transactionManager"
+class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+	<property name="dataSource" ref="dataSource"/>
+	</bean>
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+
+</beans>

@@ -20,5 +20,10 @@ public class InsectDao {
 	public List<Insect> list(){
       return sqlSession.selectList("insect.list");
     }
+	
+	// 테이블에 데이터를 삽입하는 메소드
+	public int insertInsect(Insect insect) {
+		return sqlSession.insert("insect.insertinsect",insect);
+	}
 
 }
