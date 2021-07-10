@@ -61,9 +61,9 @@
        // request.open('GET', 'process.jsp?email=nije@gmail.com');
     	  
     	  // ajax 에서 POST 방식으로 파라미터 전송
-    	  request.open('POST', process.jsp')
+    	  request.open('POST', 'process.jsp')
     	  // 전송방식을 form 으로 설정해서 post 방식으로 전송한다.
-    	  requset.setRequesHeader("Content=type", "application/x-www-form-urlencoded");
+    	  request.setRequestHeader("Content=type", "application/x-www-form-urlencoded");
     	  request.send('email=nije@gmail.com');
     	  // ajax 요청에 성공하면 호출되는 콜백 메소드 등록
     	  request.onreadystatechange = function(){
